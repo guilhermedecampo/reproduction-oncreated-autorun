@@ -1,0 +1,40 @@
+<head>
+  <title>reproduction-oncreated-autorun</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+</body>
+
+<template name="layout">
+{{#ionBody}}
+  {{> ionNavBar}}
+  {{#ionNavView}}
+    {{> yield}}
+  {{/ionNavView}}
+{{/ionBody}}
+</template>
+
+<template name="users">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Testing onCreated with this.autorun</h1>
+  {{/contentFor}}
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        {{#each users}}
+          {{#ionItem buttonRight=true avatar=true}}
+            <img src="{{profile.pictureId}}">
+            <h2>{{profile.name}}</h2>
+            <button class="button button-positive">
+              {{> ionIcon icon="ios-telephone"}}
+            </button>
+          {{/ionItem}}
+        {{/each}}
+        {{#ionItem}}
+          <button class="button button-positive">ADD MORE USERS</button>
+        {{/ionItem}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>
